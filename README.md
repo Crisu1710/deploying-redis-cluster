@@ -152,20 +152,17 @@ LoadBalancer.yaml
 apiVersion: v1
 kind: Service
 metadata:
-  name: redis-cluster
+  name: redis
 spec:
   selector:
     app: redis-cluster
+  type: NodePort
   ports:
-    - protocol: TCP
-      port: 6379
-      targetPort: 6379 
-  clusterIP: 10.106.94.61
-  type: LoadBalancer
-status:
-  loadBalancer:
-    ingress:
-    - ip:
+  - targetPort: 6379
+    port: 6379
+    nodePort: 30001
+  externalIPs:
+    - 192.168.99.103
 ```
 
 
