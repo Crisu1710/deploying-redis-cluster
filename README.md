@@ -142,8 +142,13 @@ spec:
   selector:
     app: redis-cluster
 ```
-LoadBalancer.yaml
 ```
+kubectl get services
+```
+
+LoadBalancer.yaml
+```yaml
+---
 apiVersion: v1
 kind: Service
 metadata:
