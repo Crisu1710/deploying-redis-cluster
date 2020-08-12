@@ -142,8 +142,31 @@ spec:
   selector:
     app: redis-cluster
 ```
+LoadBalancer.yaml
+```
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis-cluster
+spec:
+  selector:
+    app: redis-cluster
+  ports:
+    - protocol: TCP
+      port: 6379
+      targetPort: 6379 
+  clusterIP: 10.106.94.61
+  type: LoadBalancer
+status:
+  loadBalancer:
+    ingress:
+    - ip:
+```
+
 
 ```bash
+$ kubectl apply -f LoadBalancer.yaml
+
 $ kubectl apply -f redis-sts.yaml 
 configmap/redis-cluster created
 statefulset.apps/redis-cluster created
